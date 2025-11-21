@@ -19,7 +19,12 @@ Repository contains:
 
 For example, to try a rough vol model, simulate paths with dV_t = -κ V_t dt + σ V_t^γ dW_t (γ=0.1), compute sigma(z) for each window, output new Parquet.
 
-Dataset: 352 S&P 500 stocks (1992+ history), 1–26 weeks T, ~300K rows. Columns: ticker (str), date (date), T (int), sigma (float, annualized vol), z (float, scaled log return).
+Dataset: 352 S&P 500 stocks (1992+ history), 1–26 weeks T, ~300K rows. 
+
+Columns: ticker (str), date (date), T (int), sigma (float, annualized vol), z (float, scaled log return).
+
+Python dependencies: pip install yfinance pandas numpy scipy matplotlib pyarrow
+
 
 ## Scoring the Challenge
 
