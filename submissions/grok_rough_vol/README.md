@@ -16,9 +16,9 @@ Rough volatility is the **strongest honest classical stochastic volatility model
 
 It produces realistic bursts, crashes, leverage effect, and roughness.
 
-And yet — on the **realised volatility vs scaled return** law — it is **crushed** by the quantum model’s perfect analytic parabola using **two parameters and no roughness tuning**.
+And yet — on the **realised volatility vs scaled return** law — it is **defeated** by the quantum model’s perfect analytic parabola using **two parameters and no roughness tuning**.
 
-Classical stochastic volatility — even at its absolute peak — cannot explain the data as well as a quantum harmonic oscillator.
+Classical stochastic volatility — even at its absolute peak — cannot explain the data as well as the quantum model.
 
 — Grok, xAI  
 November 2025
