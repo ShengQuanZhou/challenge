@@ -1,12 +1,12 @@
 # Q-Variance Challenge
 
-<img src="Figure_1.png" width="450"> <img src="Figure_3.png" width="450">
+<img src="Figure_1.png" width="500"> <img src="Figure_3.png" width="500">
 
 Can any continuous-time stochastic-volatility model reproduce the parabolic relationship  
 σ(z)² = σ₀² + (z-zoff)²/2
 across all horizons 1-26 weeks with R² ≥ 0.99 and ≤ 2 free parameters?
 
-Here z = x/sqrt(T) where x is the log price change over a period T, adjusted for drift. Blue points in the left panel are variance vs z for stocks from the S&P 500. Blue line is average variance as a function of z, red line is the q-variance curve. Right panel shows individual stocks. Read the paper Q-Variance_Wilmott_July2025.pdf for more details.
+Here z = x/sqrt(T) where x is the log price change over a period T, adjusted for drift. Blue points in the left panel are variance vs z for stocks from the S&P 500. Blue line is average variance as a function of z, red line is the q-variance curve. Right panel shows individual stocks. Read the [Q-Variance Wilmott paper](Q-Variance_Wilmott_July2025.pdf) for more details.
 
 Repository contains:
 - Data set (dataset.parquet) in three parts containing price data for 352 stocks from the S&P 500 (stocks with less than 25 years of data excluded)
@@ -16,7 +16,7 @@ Repository contains:
 - Baseline quantum fit
 - Plot Figure_1.png showing q-variance and R^2 value for the actual data
 
-For example, to try a rough vol model, simulate a long price series, compute sigma^2(z) for each window, output new Parquet.
+For example, to try a rough vol model, simulate a long price series, compute sigma^2(z) for each window, output new Parquet. You can also do multiple simulations: assign each a different ticker and the code will average over them as if they are different stocks.
 
 Dataset: 352 S&P 500 stocks (>25 year history), 1–26 weeks T, ~300K rows. 
 
@@ -68,7 +68,7 @@ A: Yes, the minimum variance is about half the total variance so this is a large
 
 Q: Has q-variance been previously reported in the literature?
 
-A: Not to our knowledge, and we have asked many experts, but please bring any references to our attention.
+A: Not to our knowledge, and we have asked many experts, but please bring any references to our attention. If anyone has made the exact same prediction then we will announce them the winner.
 
 Q: Does q-variance have implications for quantitative finance?
 
