@@ -6,7 +6,7 @@ Can any continuous-time stochastic-volatility model reproduce the parabolic rela
 σ(z)² = σ₀² + (z-zoff)²/2
 across all horizons 1-26 weeks with R² ≥ 0.99 and ≤ 2 free parameters?
 
-Here z = x/sqrt(T) where x is the log price change over a period T, adjusted for drift. Read the paper Q-Variance_Wilmott_July2025.pdf for more details.
+Here z = x/sqrt(T) where x is the log price change over a period T, adjusted for drift. Blue points in the figure are variance vs z for stocks from the S&P 500. Blue line is average variance as a function of z, red line is the q-variance curve. Read the paper Q-Variance_Wilmott_July2025.pdf for more details.
 
 Repository contains:
 - Data set (dataset.parquet) in three parts containing price data for 352 stocks from the S&P 500 (stocks with less than 25 years of data excluded)
@@ -16,13 +16,13 @@ Repository contains:
 - Baseline quantum fit
 - Plot Figure_1.png showing q-variance and R^2 value for the actual data
 
-For example, to try a rough vol model, simulate a long price series, compute sigma(z) for each window, output new Parquet.
+For example, to try a rough vol model, simulate a long price series, compute sigma^2(z) for each window, output new Parquet.
 
 Dataset: 352 S&P 500 stocks (>25 year history), 1–26 weeks T, ~300K rows. 
 
 Columns: ticker (str), date (date), T (int), sigma (float, annualized vol), z (float, scaled log return).
 
-Due to file size limits, the dataset parquet file is divided into three parts. Combine them with the command:
+Due to file size limitations, the dataset parquet file is divided into three parts. Combine them with the command:
 ```python
 df = pd.concat([pd.read_parquet("dataset_part1.parquet"),pd.read_parquet("dataset_part2.parquet"),pd.read_parquet("dataset_part3.parquet")])
 ```
@@ -38,7 +38,7 @@ The challenge scores submissions on **one global R²** over the **entire dataset
 2. **Compute Variance**: Converts sigma → var = sigma².
 3. **Global Binning**: Bins z from -0.6 to 0.6 (delz=0.025), averages var per bin (as in `baseline_fit.py` global plot).
 4. **Fit**: Fits var = σ₀² + (z-zoff)²/2 to binned averages, computes R².
-5. **Threshold**: R² ≥ 0.98 with no more than two free parameters wins the challenge (baseline: 0.998).
+5. **Threshold**: R² ≥ 0.99 with no more than two free parameters wins the challenge (baseline: 0.998).
 
 ### Test Your Submission
 Run the test mode to score your Parquet:
@@ -88,7 +88,7 @@ A: The quantum model predicts variance and the price-change distribution, but do
 
 Q: Can I use AI for the challenge?
 
-A: Yes, AI-assisted entries are encouraged. We used Grok to help design the challenge. Its [entry](submissions/grok_rough_vol) was a rough volatility model.
+A: Yes, AI-assisted entries are encouraged. We used Grok to help design the challenge. Its [entry](submissions/grok_rough_vol) is a rough volatility model which uses 4 parameters.
 
 **Further reading:**
 
