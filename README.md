@@ -12,13 +12,13 @@ Repository contains:
 - Data set (dataset.parquet) in three parts containing price data for 352 stocks from the S&P 500 (stocks with less than 25 years of data excluded)
 - Full dataset generator (data_loader.py) to show how the data was generated
 - Scoring engine
-- Baseline quantum fit
+- Baseline model fit
 - Plot [Figure 1](Figure_1.png) showing q-variance and R² value for the actual data
 - Jupyter notebook (qvariance_single.ipynb) showing how to compute q-variance for a single asset
 
-For example, to try a rough vol model, simulate a long price series, compute sigma²(z) for each window, output new Parquet. You can also do multiple simulations: assign each a different ticker and the code will average over them as if they are different stocks.
+For example, to try a rough vol model, simulate a long price series, compute sigma²(z) for each window, output new parquet. You can also do multiple simulations: assign each a different ticker and the code will average over them as if they are different stocks.
 
-Dataset: 352 S&P 500 stocks (>25 year history), 1–26 weeks T, ~300K rows. 
+Dataset: 352 stocks from the S&P 500 (>25 year history), 1–26 weeks T, ~300K rows. 
 
 Columns: ticker (str), date (date), T (int), sigma (float, annualized vol), z (float, scaled log return).
 
@@ -31,17 +31,17 @@ Python dependencies: pip install yfinance pandas numpy scipy matplotlib pyarrow
 
 ## Scoring the Challenge
 
-The challenge scores submissions on **one global R²** over the **entire dataset**. Since the quantum model with σ₀=0.255 and zoff = 0.02 gives a near-perfect fit (R² = 0.998) this curve can be used as a proxy for the real data. In other words, the aim is to fit the two-parameter parabola, using **up to three parameters** – must be easy, right?
+The challenge scores submissions on **one global R²** over the **entire dataset**. Since the q-variance parabola with σ₀=0.255 and zoff = 0.02 gives a near-perfect fit (R² = 0.998) this curve can be used as a proxy for the real data. In other words, the aim is to fit the two-parameter parabola, using **up to three parameters** – must be easy, right?
 
 ### How Scoring Works
 1. **Load Submission**: `score_submission.py` reads your `dataset.parquet` (must match format: ticker, date, T, z, sigma).
 2. **Compute Variance**: Converts sigma → var = sigma².
 3. **Global Binning**: Bins z from -0.6 to 0.6 (delz=0.025), averages var per bin (as in `baseline_fit.py` global plot).
 4. **Fit**: Fits var = σ₀² + (z-zoff)²/2 to binned averages, computes R².
-5. **Threshold**: R² ≥ 0.995 with no more than three free parameters (agreement of quantum with data is 0.998). The price-change distribution in z should also be time-invariant, so the model should be independent of period length T.
+5. **Threshold**: R² ≥ 0.995 with no more than three free parameters (agreement of parabola with data is 0.998). The price-change distribution in z should also be time-invariant, so the model should be independent of period length T.
 
 ### Test Your Submission
-Run the test mode to score your Parquet:
+Run the test mode to score your simulation data:
 
 ```bash
 python3 score_submission.py
@@ -80,23 +80,11 @@ A: In theory the curve should be time-invariant, though in practice there is a s
 
 Q: Is q-variance related to the implied volatility smile?
 
-A: Yes, however it is not the same thing because q-variance applies to realized volatility. But if you want to model implied volatility, a first step is to understand realized volatility.
+A: Yes, however it is not the same thing because q-variance applies to realized volatility. But if you want to model implied volatility, a first step obviously is to understand realized volatility.
 
 Q: Is q-variance related to the price-change distribution over a period?
 
 A: Yes, it implies that price-change follows the q-distribution which is a particular time-invariant, Poisson-weighted sum of Gaussians (see further reading below). [Figure 4](Figure_4.png) compares the q-distribution with the average distribution over the S&P 500 stocks, where the distribution of each stock has been normalized by its standard deviation for comparability. The time-invariance is illustrated in [Figure 5](Figure_5.png) for different periods T.
-
-Q: What is the point in using a classical model if the quantum model is an almost perfect match to the data?
-
-A: The quantum model predicts variance and the price-change distribution, but does not provide a time series of daily prices. If a classical model can do that, and still produce the quadratic shape, then that will be very useful, which is why we are giving the classical model an extra parameter (three instead of two).
-
-Q: How was the quantum model derived?
-
-A: Details are in the references, but put simply the q-variance property is the equation for the variance of a perturbed quantum oscillator, which was derived by quantizing a linear entropic force. The model can be viewed as a first-order approximation to the price dynamics as they play out over a period.
-
-Q. What does the quantum model, or the behaviour of stocks, have to do with subatomic particles?
-
-A. Nothing, other than the fact that some problems which couple probability and dynamics in both physics and finance are best modelled using a type of probability that is based on complex numbers. And sometimes you have to trust the mathematics.
 
 Q: Can I use AI for the challenge?
 
