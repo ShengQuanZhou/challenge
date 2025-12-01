@@ -41,7 +41,7 @@ The challenge scores submissions on **one global R²** over the **entire dataset
 
 To get started, first simulate a long price series using your model, then use `data_loader.py` to compute the variances $\sigma^2(z)$ for each window and output the `dataset.parquet` file. The benchmark file has around 3 million rows, so you want a long simulation.
 
-Next, use `score_submission.py` to read your `dataset.parquet` (must match format: ticker, date, T, z, sigma). This will bin the values of $z$ in the range from -0.6 to 0.6, and compute the average variance per bin. It also computes the R² of your binned averages to the q-variance curve $\sigma^2(z) = \sigma_0^2 + (z-z_0)^2/2$.
+Next, use `score_submission.py` to read your `dataset.parquet` (must match format: ticker, date, T, z, sigma). This will bin the values of $z$ in the range from -0.6 to 0.6 as in the figure, and compute the average variance per bin. It also computes the R² of your binned averages to the q-variance curve $\sigma^2(z) = \sigma_0^2 + (z-z_0)^2/2$.
 
 The threshold for the challenge is R² ≥ 0.995 with no more than three free parameters. The price-change distribution in $z$ should also be time-invariant, so the model should be independent of period length $T$. If your model doesn't tick all the boxes, please enter it anwyay because it may qualify for an honourable mention.
 
@@ -97,7 +97,9 @@ A: Yes, AI-assisted entries are encouraged. We used Grok to help design and code
 ## Further Reading
 
 Wilmott P, Orrell D (2025) [Q-Variance: or, a Duet Concerning the Two Chief World Systems](Q-Variance_Wilmott_July2025.pdf). Wilmott 2025(138).
- 
+
+Orrell D (2022) Quantum Economics and Finance: An Applied Mathematics Introduction, third edition. New York: Panda Ohana. 
+
 Orrell D (2025) A Quantum Jump Model of Option Pricing. The Journal of Derivatives 33(2): 9-27.
 
 Orrell D (2025) Quantum impact and the supply-demand curve. Philosophical Transactions of the Royal Society A 383(20240562).
