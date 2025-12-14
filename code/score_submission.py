@@ -1,5 +1,5 @@
 # score_submission.py - reads a parquet file and compares variance curve with baseline
-# also divides data into 400 parts, if 5e6 time points this gives 5e6/400 days or about 50 years each part
+# also divides data into 400 parts, if 5e6 time points this gives 5e6//400 days or about 50 years each part
 # should see q-variance for each part, not just the total
 # also checks distn for time invariance
 
@@ -114,9 +114,9 @@ delz = 0.025*4  # wider bin for these noisy plots
 nbins = int(2*zmax/delz + 1)
 bins = np.linspace(-zmax, zmax, nbins)         # fixed bins
 
-if len(np.unique(df_orig["ticker"])) == 1:     # model data
+if len(np.unique(df_orig["ticker"])) >= 1:     # set to >=1 to divide all data, or == 1 to divide model data only ###
     print("dividing into 400 separate runs") 
-    df = assign_segmented_tickers(df_orig,400)  # divide and add tickers
+    df = assign_segmented_tickers(df_orig,800)  # divide and add tickers
 else:
     df = df_orig
 
