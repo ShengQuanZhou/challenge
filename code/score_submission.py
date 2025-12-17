@@ -1,9 +1,3 @@
-# score_submission.py - reads a parquet file and compares variance curve with baseline
-# also divides data into 500 parts, if 5e6 time points this gives 5e6//500 days or about 40 years each part
-# should see q-variance for each part, not just the total
-# does TVEC = 5 ONLY for ensemble plot
-# also checks distn for time invariance
-
 import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
@@ -123,6 +117,7 @@ else:
     print("data already divided into separate tickers") 
     df = df_orig
 
+
 TICKERS = np.unique(df["ticker"])
 r2vec = np.zeros(len(TICKERS))
 q0vec = np.zeros(len(TICKERS))
@@ -130,7 +125,7 @@ q1vec = np.zeros(len(TICKERS))
 i = 0
 fig, ax = plt.subplots(figsize=(9,7))
 for tickcur in TICKERS:
-    dfcur = df[ (df["ticker"] == tickcur) & (df["T"] == 5) ].copy()
+    dfcur = df[ (df["ticker"] == tickcur)  ].copy()   # & (df["T"] == 5)
     binned = (dfcur.assign(z_bin=pd.cut(dfcur.z, bins=bins, include_lowest=True))
                    .groupby('z_bin',observed=False)
                    .agg(z_mid=('z', 'mean'), var=('var', 'mean'))
@@ -151,7 +146,7 @@ r2mean = np.mean(r2vec)
 r2median = np.median(r2vec)
 ax.set_xlabel('z (scaled log return)', fontsize=12)
 ax.set_ylabel('Annualised variance', fontsize=12)
-ax.set_title(f'Mean R2 for T=5 individual stocks = {r2mean:4f},  median = {r2median:4f}', fontsize=14)
+ax.set_title(f'Mean R2 for individual stocks = {r2mean:4f},  median = {r2median:4f}', fontsize=14)
 #ax.legend(fontsize=12)
 
 ymax2 = 1.2
@@ -228,24 +223,6 @@ plt.ylabel('Density', fontsize=14)
 plt.xlim(-1.2, 1.2)
 plt.legend(fontsize=10, loc='upper right')
 plt.grid(alpha=0.3)
-plt.tight_layout()
-
-
-
-# now plot histogram of r2
-
-plt.figure(figsize=(9,7))
-plt.hist(r2vec, bins = np.linspace(-10, 1, 44), color='grey', edgecolor='black')
-
-plt.xlabel('R2', fontsize=12)
-plt.ylabel('count', fontsize=12)
-plt.title(f'R2 mean = {np.mean(r2vec):4f}, median = {np.median(r2vec):4f}', fontsize=14)
-
-plt.xlim(-10, 1) 
-#plt.ylim(0.0, 100)
-
-#plt.legend(fontsize=12)
-#plt.grid(alpha=0.3)
 plt.tight_layout()
 
 
