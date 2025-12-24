@@ -31,7 +31,7 @@ This construction ensures that:
 
 ## Latent Precision Process
 
-A positive latent process \( \tau_t \) governs market activity.  
+A positive latent process $\( \tau_t \)$ governs market activity.  
 It is simulated using a **stationary mean-reverting positive diffusion** (CIR form, used purely for numerical convenience):
 
 $$
@@ -104,7 +104,7 @@ This ensures that:
 
 - $\sigma_0$ represents the **minimum volatility level**  
 - Corresponds to calm market regimes
-- 
+
 No additional free parameter is introduced at this stage;  
 the per-shock variance is fully determined by \( \sigma_0 \) and the stationary mean intensity.
 
