@@ -13,3 +13,5 @@ One entry (since withdrawn) tackled this in an ingenious way by adding an extra 
 One entry used a stochastic volatility approach, however after testing the model did not agree with q-variance to the required standard. We therefore have no firm winner, but a number of close entries (Wilmott magazine to announce later).
 
 Now, as shown in the competition announcement, the q-variance curve fits the average variance of S&P 500 stocks to a very high level of accuracy. So if conventional models of volatility can’t fit the quantum model, then they can’t fit volatility. That is the real quantum conundrum.
+
+Happy New Year!
