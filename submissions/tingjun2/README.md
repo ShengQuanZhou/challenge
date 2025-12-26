@@ -10,10 +10,10 @@ The model utilizes four parameters to control the GARCH dynamics and recover the
 
 | Parameter | Value | Influence on Q-Variance Geometry |
 | :--- | :--- | :--- |
-| **Target Vol ($\sigma$)** | **0.0950** | **Minimal Volatility ($\sigma_0$):** Sets the vertical baseline (the "floor" of the parabola). |
+| **Target Vol ($\sigma$)** | **0.095** | **Minimal Volatility ($\sigma_0$):** Sets the vertical baseline (the "floor" of the parabola). |
 | **Annual Return ($\mu$)** | **0.0844** | **Z-Shift ($z_{off}$):** Controls the horizontal asymmetry (displacement from zero). |
-| **Persistence ($\lambda$)** | **0.8000** | **Curvature/Steepness:** Determines the quadratic coefficient; lower $\lambda$ makes the parabola **narrower** |
-| **Mean Reversion ($\gamma$)** | **0.0100** | **Stability:** The buffer ensures $\lambda + \alpha < 1$, allowing the process to converge to a stationary mean. |
+| **Persistence ($\lambda$)** | **0.8** | **Curvature/Steepness:** Determines the quadratic coefficient; lower $\lambda$ makes the parabola **narrower** |
+| **Mean Reversion ($\gamma$)** | **0.01** | **Stability:** The buffer ensures $\lambda + \alpha < 1$, allowing the process to converge to a stationary mean. |
 
 
 
