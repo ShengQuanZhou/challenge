@@ -63,7 +63,7 @@ To make your entry official:
    - Contact (optional)
 4. Open a Pull Request titled: "Submission: [Your Team Name]"
 
-Submission tips:
+**Submission tips**
 - Check your model is robust to things like the number of simulation steps or sample lengths, otherwise these are counted as parameters. The model data should converge to the parabola, not just match it for a particular choice of simulation time.
 - Something counts as a parameter if it is adjusted to fit the desired result, or if changing it within reasonable bounds affects the result.
 - Parameters need to include a drift or offset, because the aim is to fit the specific parabola in Figure 1 which has a small offset.
