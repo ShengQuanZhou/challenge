@@ -10,6 +10,10 @@ Four submissions drew on the idea of sampling variance from an inverse-gamma dis
 
 [One entry](https://github.com/q-variance/challenge/tree/main/submissions/simu.ai) (since withdrawn) tackled this in an ingenious way by adding an extra layer of regime switching, however this put the number of tuneable parameters over the limit. It also couldn’t address the other problem, which is that the inverse-gamma distribution is extremely noisy, with huge spikes, and the variance is undefined. The result is that the model (and its $R^2$ score) only converges over simulations of thousands of years, and even then is sensitive to whether the selected time period contains a certain spike. 
 
-Other entries have used a stochastic volatility approach, however the models either introduced extra parameters or did not agree with q-variance to the required standard. Another entry used an optimized [GARCH model](https://github.com/q-variance/challenge/tree/main/submissions/tingjun2) to obtain a good fit, but required four main parameters, plus a fifth to keep the model stable (the parameters were in a region where the variance-of-variance is undefined). We therefore have no firm winner, but a number of close entries (Wilmott magazine to announce later).
+Other entries have used a stochastic volatility approach, however the models either introduced extra parameters or did not agree with q-variance to the required standard. Another entry used an optimized [GARCH model](https://github.com/q-variance/challenge/tree/main/submissions/tingjun2) to obtain a good fit, but required four main parameters, plus a fifth to keep the model stable (the parameters were in a region where the variance-of-variance is undefined). 
+
+Most entries have tackled the challenge by attempting to reverse-engineer the figure. A different approach was taken in an [entry](https://github.com/q-variance/challenge/tree/main/submissions/Kent) which showed that a preexisting model produced an approximate version of q-variance. While the model had more than three parameters, it was a rare example of a model which naturally produces the desired kind of behaviour.
+
+We therefore have no firm winner, but a number of close entries (Wilmott magazine to announce later).
 
 Happy New Year!
