@@ -1,6 +1,6 @@
 # Summary of submissions as of end-2025
 
-We have now had a number of excellent entries to the competition (not all of whom posted to GitHub) and wish to thank all the participants. This note summarises again the question, and the answers received so far. Although the competition was originally framed as an end-of-year challenge, it remains open.
+We have now had a number of excellent entries to the competition (not all of whom posted to GitHub) and wish to thank all the participants. This note summarises again the question, and the answers received so far. Although the competition was originally framed as an end-of-year challenge, it remains open. Newer submissions will appear in the [submissions folder](submissions).
 
 Q-variance is all about the coefficient of $z^2$. The model showed it must be 0.5. Some common models may show a quadratic, and some may even show the coefficient is independent of period $T$. But that coefficient is a parameter in the models, it can be chosen (for example by adjusting a shape factor). None have to have 0.5. 
 
