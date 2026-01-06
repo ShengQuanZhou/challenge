@@ -66,7 +66,7 @@ To make your entry official:
 **Submission tips**
 - Read the [summary of previous submissions](subsummary.md) so you don't duplicate an existing approach.
 - Check your model is robust to things like the number of simulation steps or sample lengths, otherwise these are counted as parameters. The model data should converge to the parabola, not just match it for a particular choice of simulation time.
-- Something counts as a parameter if it is adjusted to fit the desired result, or if changing it within reasonable bounds affects the result. Please declare **all such parameters**, don't have an ad hoc number or adjustment somewhere in your code which affects the results but is not declared as a parameter. The test is not whether a number is explicitly optimized, it is whether it can be eliminated and the model still works.
+- Something counts as a parameter if it is adjusted to fit the desired result, or if changing it within reasonable bounds affects the result. Please declare **all such parameters**, don't have an ad hoc number or adjustment somewhere in your code which affects the results but is not declared as a parameter. The test is not whether a number is explicitly optimized, or is at its "default value", it is whether it can be eliminated and the model still works.
 - Parameters need to include a drift or offset, because the aim is to fit the specific parabola in Figure 1 which has a small offset of $z_0 = 0.021$. The minimum volatility should be $\sigma_0=0.259$.
 - Standard techniques like stochastic volatility, rough volatility, or GARCH typically involve a minimum of four parameters when we include the drift (and often more to ensure a stable solution for this problem). That means you need to do something different.
 - The model should be T-invariant, so changing the period T should not give a very different result, either in terms of the q-variance plot or the distribution.
@@ -130,7 +130,7 @@ A: Some great tries but no clear winner, see the summary [here](subsummary.md).
 
 Q: Okay, I'll bite. What is the quantum explanation?
 
-A: Price change is like pushing on a spring. The linear restoring force gives you the square-root law of price impact. Integrating the force gives you the $z^2/2$ term in q-variance. But you need to use a probabilistic framework which accounts for dynamics. See sources below.
+A: Price change is like stretching a spring. The linear restoring force gives you the square-root law of price impact. Integrating the force gives you the $z^2/2$ term in q-variance. But you need to use a probabilistic framework which accounts for dynamics. See sources below.
 
 Q: Sounds like quantum woo to me.
 
