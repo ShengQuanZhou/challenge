@@ -20,7 +20,7 @@ To take part in the challenge, a suggested first step is to replicate the above 
 
 For questions on the competition, email admin@wilmott.com.
 
-> ## 🚀 Banner Competition update 11-01-2026
+> ## Competition Update 11-01-2026
 > **Read this before submitting!**
 >
 > The challenge has been running for over a month and we now have a good number of entries.
