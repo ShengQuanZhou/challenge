@@ -162,10 +162,7 @@ A: ?
 
 Q: Hang on. Why do we need a continuous time model anyway? Don't we just need the price change distribution as a function of time?
 
-A: You need it for perfect hedging.
-
-Q: But everyone knows you can't perfectly hedge anyway! Due to things like the bid-ask spread ... Oh.
-
+A: In theory you need it for perfect hedging, but in practice that is impossible due to things like the bid-ask spread. The situation may therefore resemble somthing like turbulent flow in physics, where we can model the statistical behaviour without reproducing individual trajectories.
 
 ## Further Reading
 
