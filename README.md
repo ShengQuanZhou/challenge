@@ -160,9 +160,9 @@ Q: Sounds like quantum woo to me.
 
 A: ?
 
-Q: Hang on. Why do we need a continuous time model anyway? Don't we just need the price change distribution as a function of time?
+Q: Why do we need a continuous time model anyway? Don't we just need the price change distribution as a function of time?
 
-A: In theory you need it for perfect hedging, but in practice that is impossible due to things like the bid-ask spread. The situation may therefore resemble somthing like turbulent flow in physics, where we can model the statistical behaviour without reproducing individual trajectories. The aim of the challenge is to help answer that question.
+A: In theory you need it for perfect hedging, but in practice that is impossible due to things like the bid-ask spread. The situation may therefore resemble something like turbulent flow in physics, where we can model the statistical behaviour without reproducing individual trajectories. The aim of the challenge is to help answer that question.
 
 ## Further Reading
 
